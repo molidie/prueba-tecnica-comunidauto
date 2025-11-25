@@ -25,6 +25,7 @@ blue**.
 9.  Navegación del Sitio
 10. Responsive Design
 11. Extras Implementados
+12. Decisiones Técnicas
 
 ------------------------------------------------------------------------
 
