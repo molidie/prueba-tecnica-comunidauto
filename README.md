@@ -141,7 +141,7 @@ Incluye funcionalidades avanzadas como:
 1.  Mover el proyecto a `htdocs/` (XAMPP) o `www/` (WAMP)
 2.  Iniciar Apache
 3.  Ingresar en el navegador:
-    **http://localhost/autix/**
+    **http://localhost/nombre-carpeta/**
 
 ------------------------------------------------------------------------
 
