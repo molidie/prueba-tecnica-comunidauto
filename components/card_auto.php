@@ -1,4 +1,4 @@
-<a href="detalle.php?id=<?php echo $auto['id']; ?>"
+<a href="/pages/detalle.php?id=<?php echo $auto['id']; ?>"
     class="group block bg-white rounded-2xl overflow-hidden border border-gray-200 hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
 
     <div class="relative h-48 bg-gray-50 overflow-hidden">

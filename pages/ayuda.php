@@ -1,8 +1,8 @@
-<?php include 'includes/header.php'; ?>
+<?php include '../includes/header.php'; ?>
 <div class="bg-white border-b border-gray-200">
     <div class="max-w-6xl mx-auto px-4 sm:px-6 py-4">
         <nav class="text-sm text-gray-500">
-            <a href="index.php" class="hover:text-primary transition-colors">Inicio</a>
+            <a href="../index.php" class="hover:text-primary transition-colors">Inicio</a>
             <span class="mx-2">/</span>
             <span class="text-gray-900 font-medium">¿Cómo funciona?</span>
         </nav>
@@ -11,7 +11,7 @@
 
 <div class="max-w-6xl mx-auto px-4 sm:px-6 py-8">
 
-    <?php include 'components/como_funciona.php'; ?>
+    <?php include '../components/como_funciona.php'; ?>
 
     <div class="bg-white rounded-2xl p-8 border border-gray-200 shadow-sm mt-12">
         <h2 class="text-2xl font-bold text-gray-900 mb-8 text-center">Preguntas Frecuentes</h2>
@@ -50,4 +50,4 @@
     </div>
 </div>
 
-<?php include 'includes/footer.php'; ?>
+<?php include '../includes/footer.php'; ?>

@@ -1,5 +1,10 @@
 # 🚗 **Autix - Sistema Web de Venta de Vehículos**
 
+![PHP](https://img.shields.io/badge/PHP-7.4%2B-777BB4?style=for-the-badge&logo=php&logoColor=white)
+![MySQL](https://img.shields.io/badge/MySQL-005C84?style=for-the-badge&logo=mysql&logoColor=white)
+![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white)
+![JSON](https://img.shields.io/badge/Data-JSON-000000?style=for-the-badge&logo=json&logoColor=white)
+
 Una aplicación web moderna desarrollada en **PHP**, enfocada en la
 compra y venta de vehículos, con catálogo dinámico, filtros avanzados y
 conversión automática de moneda utilizando la cotización del **dólar
@@ -58,13 +63,18 @@ Incluye funcionalidades avanzadas como:
 -   Formularios validados para contacto.
 -   Componentes modulares reutilizables.
 
+### 📊 **Panel Administrativo (MySQL Integration)**
+-   **Dashboard en Tiempo Real:** KPIs de ingresos, ventas y stock calculados con SQL (`SUM`, `COUNT`).
+-   **Gestión de Ventas:** Listado detallado con relaciones (Clientes, Vehículos, Pagos).
+-   **Búsqueda Instantánea:** Filtrado de tablas mediante JavaScript sin recargar la página.
+
 ------------------------------------------------------------------------
 
 ## 🛠️ **Tecnologías Utilizadas**
 
 -   **Backend:** PHP 7.4+
 -   **Frontend:** HTML5, Tailwind CSS, JavaScript
--   **Base de datos:** JSON (simulación de DB)
+-   **Base de datos:** Híbrida (JSON para Frontend / MySQL para dashboard de gestión)
 -   **API externa:** Cotización del dólar vía *Bluelytics*
 -   **Iconografía:** Heroicons (SVG)
 
@@ -72,12 +82,21 @@ Incluye funcionalidades avanzadas como:
 
 ## 📁 **Estructura del Proyecto**
 
-    autix/
+    prueba-tecnica-comunidauto/
     ├── index.php                  # Página principal
-    ├── detalle.php                # Vista detallada del vehículo
-    ├── contacto.php               # Formulario de contacto
-    ├── ayuda.php                  # Preguntas frecuentes
     ├── login.php / logout.php     # Autenticación básica
+    │
+    ├── admin/
+    │   ├── logica_admin_panel.php # Datos calculados a partir de la BD
+    │   └── panel.php              # Dashboard de Gestión (Privado - MySQL)
+    │ 
+    ├── config/
+    │   └── db.php                 # Conexión PDO a MySQL
+    │
+    ├── pages/
+    │   ├── detalle.php            # Vista detallada del vehículo
+    │   ├── contacto.php           # Formulario de contacto
+    │   └── ayuda.php              # Preguntas frecuentes
     │
     ├── data/
     │   ├── autos.json             # Base de datos de vehículos
@@ -89,6 +108,7 @@ Incluye funcionalidades avanzadas como:
     │   ├── funciones.php          # Funciones de obtención de datos
     │   ├── moneda.php             # Conversión de moneda
     │   └── logica_resultados.php  # Lógica de filtros y búsqueda
+    │    
     │
     └── components/
         ├── card_auto.php          # Renderiza la tarjeta individual de cada vehículo.
@@ -234,3 +254,8 @@ Para el desarrollo de este proyecto se tomaron las siguientes decisiones de arqu
     * **Reutilización:** Se crearon componentes como `card_auto.php`, `header.php` y `footer.php` para elementos repetitivos, asegurando consistencia visual y facilitando cambios globales.
     * **Descomposición:** Se extrajeron bloques lógicos complejos (como `sidebar_filtros.php` o `paginacion.php`) en archivos independientes, incluso si se utilizan en una sola vista.
     * **Objetivo:** Mantener los controladores principales (`index.php`, `resultados_autos.php`) legibles y enfocados en el flujo de la aplicación, evitando archivos monolíticos difíciles de mantener ("Spaghetti Code").
+
+6.  **Persistencia Híbrida (JSON + MySQL):**
+    * Se implementó una arquitectura de doble fuente de datos para demostrar versatilidad técnica:
+        * **Frontend (JSON):** Garantiza máxima velocidad de lectura para el usuario final y portabilidad del catálogo público.
+        * **Backend Admin (MySQL):** Utiliza una base de datos relacional para manejar la integridad de datos complejos (Ventas, Clientes, Pagos) y generar reportes analíticos precisos mediante consultas SQL avanzadas.

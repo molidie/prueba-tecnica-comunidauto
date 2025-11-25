@@ -43,8 +43,8 @@ $categoriasVisuales = [
 
 <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
     <?php foreach ($categoriasVisuales as $catNombre => $catIcono): ?>
-        <a href="?categoria=<?php echo urlencode($catNombre); ?>" 
-           class="bg-white border border-gray-200 rounded-lg p-6 text-center hover:border-primary hover:shadow-md transition-all group flex flex-col items-center justify-center h-full">
+        <a href="?categoria=<?php echo urlencode($catNombre); ?>"
+            class="bg-white border border-gray-200 rounded-lg p-6 text-center hover:border-primary hover:shadow-md transition-all group flex flex-col items-center justify-center h-full">
             <div class="mb-3 flex justify-center">
                 <?php echo $catIcono; ?>
             </div>

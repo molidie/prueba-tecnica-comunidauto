@@ -92,7 +92,7 @@ $dolarBlue = obtenerCotizacionBlue();
     <div class="max-w-7xl mx-auto px-4 sm:px-6">
       <div class="flex justify-between items-center h-16">
 
-        <a href="index.php" class="flex items-center space-x-2 group transition-all">
+        <a href="../index.php" class="flex items-center space-x-2 group transition-all">
           <div class="w-10 h-10 bg-primary rounded-xl flex items-center justify-center shadow-md">
             <span class="text-white font-bold text-lg">A</span>
           </div>
@@ -100,24 +100,28 @@ $dolarBlue = obtenerCotizacionBlue();
         </a>
 
         <nav class="hidden md:flex items-center space-x-1">
-          <a href="index.php" class="px-4 py-2 font-medium rounded-lg transition-colors <?php echo obtenerClasesActivas('index.php'); ?>">Home</a>
-          <a href="ayuda.php" class="px-4 py-2 font-medium rounded-lg transition-colors <?php echo obtenerClasesActivas('ayuda.php'); ?>">¿Cómo funciona?</a>
-          <a href="contacto.php" class="px-4 py-2 font-medium rounded-lg transition-colors <?php echo obtenerClasesActivas('contacto.php'); ?>">Contacto</a>
+          <a href="../index.php" class="px-4 py-2 font-medium rounded-lg transition-colors <?php echo obtenerClasesActivas('index.php'); ?>">Home</a>
+          <a href="../pages/ayuda.php" class="px-4 py-2 font-medium rounded-lg transition-colors <?php echo obtenerClasesActivas('ayuda.php'); ?>">¿Cómo funciona?</a>
+          <a href="../pages/contacto.php" class="px-4 py-2 font-medium rounded-lg transition-colors <?php echo obtenerClasesActivas('contacto.php'); ?>">Contacto</a>
+          <?php if (isset($_SESSION['usuario_logueado']) && $_SESSION['usuario_logueado'] === true): ?>
+            <a href="../admin/panel.php" class="px-4 py-2 font-medium rounded-lg transition-colors <?php echo obtenerClasesActivas('panel.php'); ?>">Gestión</a>
+          <?php endif; ?>
         </nav>
 
         <?php if (isset($_SESSION['usuario_logueado']) && $_SESSION['usuario_logueado'] === true): ?>
 
           <div class="hidden md:flex items-center gap-4">
+
             <span class="text-sm text-gray-600">
               Hola, <?php echo $_SESSION['email_usuario'] ?? ''; ?> 👋
             </span>
-            <a href="logout.php" class="bg-gray-200 text-gray-800 px-5 py-2 rounded-full font-bold hover:bg-gray-300 transition-colors text-sm">
+            <a href="../logout.php" class="bg-gray-200 text-gray-800 px-5 py-2 rounded-full font-bold hover:bg-gray-300 transition-colors text-sm">
               Salir
             </a>
           </div>
 
         <?php else: ?>
-          <a href="login.php" class="bg-primary hidden md:flex text-white px-4 py-2 rounded-xl text-sm font-medium shadow-sm hover:bg-primary-dark transition-all flex items-center">
+          <a href="../login.php" class="bg-primary hidden md:flex text-white px-4 py-2 rounded-xl text-sm font-medium shadow-sm hover:bg-primary-dark transition-all flex items-center">
             <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
             </svg>
@@ -137,10 +141,12 @@ $dolarBlue = obtenerCotizacionBlue();
       </div>
 
       <div id="mobileMenu" class="hidden md:hidden flex flex-col space-y-3 py-4 px-2 border-t border-gray-200 animate-fade-down bg-white">
-        <a href="index.php" class="block w-full px-4 py-3 font-medium rounded-xl transition-colors <?php echo obtenerClasesActivas('index.php'); ?>">Home</a>
-        <a href="ayuda.php" class="block w-full px-4 py-3 font-medium rounded-xl transition-colors <?php echo obtenerClasesActivas('ayuda.php'); ?>">¿Cómo funciona?</a>
-        <a href="contacto.php" class="block w-full px-4 py-3 font-medium rounded-xl transition-colors <?php echo obtenerClasesActivas('contacto.php'); ?>">Contacto</a>
-
+        <a href="../index.php" class="block w-full px-4 py-3 font-medium rounded-xl transition-colors <?php echo obtenerClasesActivas('index.php'); ?>">Home</a>
+        <a href="../pages/ayuda.php" class="block w-full px-4 py-3 font-medium rounded-xl transition-colors <?php echo obtenerClasesActivas('ayuda.php'); ?>">¿Cómo funciona?</a>
+        <a href="../pages/contacto.php" class="block w-full px-4 py-3 font-medium rounded-xl transition-colors <?php echo obtenerClasesActivas('contacto.php'); ?>">Contacto</a>
+        <?php if (isset($_SESSION['usuario_logueado']) && $_SESSION['usuario_logueado'] === true): ?>
+          <a href="panel.php" class="px-4 py-2 font-medium rounded-lg transition-colors <?php echo obtenerClasesActivas('panel.php'); ?>">Gestión</a>
+        <?php endif; ?>
         <div class="border-t border-gray-200 my-2"></div>
 
         <?php if (isset($_SESSION['usuario_logueado']) && $_SESSION['usuario_logueado'] === true): ?>
@@ -149,14 +155,15 @@ $dolarBlue = obtenerCotizacionBlue();
           <div class="px-4 py-2 text-sm text-gray-500 text-center"><span class="text-sm text-gray-600 hidden md:block">
               Hola, <?php echo $_SESSION['email_usuario'] ?? 'Admin'; ?> 👋
             </span></div>
-          <a href="logout.php" class="w-full bg-gray-200 text-gray-800 px-4 py-3 rounded-xl font-medium shadow-sm hover:bg-gray-300 transition-all flex items-center justify-center gap-2">
+
+          <a href="../logout.php" class="w-full bg-gray-200 text-gray-800 px-4 py-3 rounded-xl font-medium shadow-sm hover:bg-gray-300 transition-all flex items-center justify-center gap-2">
             Cerrar Sesión
           </a>
 
         <?php else: ?>
 
           <div class="border-t border-gray-200 my-2"></div>
-          <a href="login.php" class="w-full bg-gray-900 text-white px-4 py-3 rounded-xl font-medium shadow-sm hover:bg-gray-800 transition-all flex items-center justify-center gap-2">
+          <a href="../login.php" class="w-full bg-gray-900 text-white px-4 py-3 rounded-xl font-medium shadow-sm hover:bg-gray-800 transition-all flex items-center justify-center gap-2">
             Acceder a mi cuenta
           </a>
           <div class="text-sm text-gray-500 text-center mt-4 flex flex-col gap-1">

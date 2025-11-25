@@ -1,6 +1,6 @@
 <?php
-require_once 'includes/funciones.php';
-require_once 'includes/moneda.php';
+require_once __DIR__ . '/../includes/funciones.php';
+require_once __DIR__ . '/../includes/moneda.php';
 
 if (!isset($_GET['id'])) {
   header("Location: index.php");
@@ -37,7 +37,7 @@ if (!$auto) {
   exit;
 }
 
-include 'includes/header.php';
+include '../includes/header.php';
 
 $telefono = "+5491112345678";
 $mensaje = "Hola, me interesa el " . $auto['marca'] . " " . $auto['modelo'] . " - Año " . $auto['anio'] . " que vi en Autix";
@@ -222,7 +222,7 @@ $mensajeCodificado = urlencode($mensaje);
 
       <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
         <?php foreach ($autosRelacionados as $auto): ?>
-          <?php include __DIR__ . '/components/card_auto.php'; ?>
+          <?php include __DIR__ . '/../components/card_auto.php'; ?>
         <?php endforeach; ?>
       </div>
     </div>
@@ -235,4 +235,4 @@ $mensajeCodificado = urlencode($mensaje);
   }
 </script>
 
-<?php include 'includes/footer.php'; ?>
+<?php include '../includes/footer.php'; ?>

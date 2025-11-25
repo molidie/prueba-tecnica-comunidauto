@@ -8,7 +8,7 @@ if (!isset($_SESSION['moneda'])) {
 }
 
 if (isset($_GET['moneda'])) {
-    $_SESSION['moneda'] = $_GET['moneda']; 
+    $_SESSION['moneda'] = $_GET['moneda'];
     // limpio la url para que no quede ?moneda=ARS en la misma
     $url = strtok($_SERVER["REQUEST_URI"], '?');
     $query = $_GET;
@@ -20,7 +20,8 @@ if (isset($_GET['moneda'])) {
     exit;
 }
 
-function obtenerCotizacionBlue() {
+function obtenerCotizacionBlue()
+{
     $archivoCache = __DIR__ . '/../data/dolar_cache.json';
     $tiempoValidez = 3600;
 
@@ -30,7 +31,7 @@ function obtenerCotizacionBlue() {
         return $data['blue']['value_sell'] ?? 1400; // Si por algun motivo esta roto el json retorna 1400 como valor.
     }
     $contenido = @file_get_contents('https://api.bluelytics.com.ar/v2/latest');
-    
+
     if ($contenido) {
         if (!is_dir(dirname($archivoCache))) mkdir(dirname($archivoCache), 0777, true);
         // 0777 se utiliza para otorgar permisos completos de lectura, escritura y ejecución
@@ -40,10 +41,11 @@ function obtenerCotizacionBlue() {
     }
 
     // retorno un valor por si falla la api
-    return 1400; 
+    return 1400;
 }
 
-function mostrarPrecio($precioUsd) {
+function mostrarPrecio($precioUsd)
+{
     if ($_SESSION['moneda'] === 'ARS') {
         $blue = obtenerCotizacionBlue();
         $precioArs = $precioUsd * $blue;
@@ -53,9 +55,9 @@ function mostrarPrecio($precioUsd) {
     }
 }
 
-function urlCambioMoneda($nuevaMoneda) {
-    $params = $_GET; 
+function urlCambioMoneda($nuevaMoneda)
+{
+    $params = $_GET;
     $params['moneda'] = $nuevaMoneda;
-    return '?' . http_build_query($params); 
+    return '?' . http_build_query($params);
 }
-?>
